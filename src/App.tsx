@@ -25,7 +25,7 @@ const config = createConfig(
 const App: React.FC<AppProps> = () => {
   return (
     <WagmiConfig config={config}>
-      <ConnectKitProvider>
+      <ConnectKitProvider theme="retro">
         <Dashboard />
         <ConnectKitButton />
       </ConnectKitProvider>
