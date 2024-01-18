@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { WagmiConfig, createConfig } from 'wagmi';
+import {
+  ConnectKitProvider,
+  ConnectKitButton,
+  getDefaultConfig,
+} from 'connectkit';
 
-function App() {
+interface AppProps {}
+
+const config = createConfig(
+  getDefaultConfig({
+    alchemyId: process.env.ALCHEMY_ID,
+    walletConnectProjectId: process.env.WALLETCONNECT_PROJECT_ID!,
+
+    appName: 'TheAbel0990 LFGHO',
+
+    appDescription: 'Project for FLGHO',
+    appUrl: 'https://github.com/ElAbel0990/lfgho-hackathon-frontend',
+    appIcon: 'https://family.co/logo.png',
+  }),
+);
+
+const App: React.FC<AppProps> = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WagmiConfig config={config}>
+      <ConnectKitProvider>
+        {/* Your App */}
+        <ConnectKitButton />
+      </ConnectKitProvider>
+    </WagmiConfig>
   );
-}
+};
 
 export default App;
