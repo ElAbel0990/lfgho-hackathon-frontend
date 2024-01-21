@@ -27,7 +27,6 @@ const App: React.FC<AppProps> = () => {
     <WagmiConfig config={config}>
       <ConnectKitProvider theme="retro">
         <Dashboard />
-        <ConnectKitButton />
       </ConnectKitProvider>
     </WagmiConfig>
   );
